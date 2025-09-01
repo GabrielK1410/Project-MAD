@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 const styles = StyleSheet.create({
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     gap: 20, // jarak antar gambar
   },
   tinyLogo: {
-    width: 90,
+    width: 100,
     height: 80,
     resizeMode: 'contain',
   },
