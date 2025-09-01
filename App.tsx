@@ -1,45 +1,67 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from 'react';
+import { Text, StyleSheet, View } from 'react-native';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
+// komponen adalah fungsi yang mengembalikan atau mereturn JSX
+const App = () => {
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
-  );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
+    //JSX
+    <View>
+      <View style={styles.container}>
+        <Text style={styles.title}>Basic React Native</Text>
+      </View>
+      <View style={styles.redBox}>
+        <Text>Basic React Native</Text>
+      </View>
+      <View style={styles.greenBox} />
+      <View style={styles.blueBox} />
     </View>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+};
 
 export default App;
+const styles = StyleSheet.create({
+  title: {
+    backgroundColor: 'yellow',
+    color: 'red',
+    fontSize: 30,
+    textAlign: 'center',
+    fontWeight: '600',
+  },
+  container: {
+    backgroundColor: 'pink',
+    borderColor: 'black',
+    borderWidth: 5,
+    padding: 15,
+    margin: 15,
+  },
+  redBox: {
+    backgroundColor: 'red',
+    color: 'blue',
+    fontSize: 30,
+    textAlign: 'center',
+    fontWeight: '600',
+    width: 390,
+    height: 100,
+    margin: 10,
+  },
+  greenBox: {
+    backgroundColor: 'green',
+    color: 'blue',
+    fontSize: 30,
+    textAlign: 'center',
+    fontWeight: '600',
+    width: 390,
+    height: 100,
+    margin: 10,
+  },
+  blueBox: {
+    backgroundColor: 'blue',
+    color: 'blue',
+    fontSize: 30,
+    textAlign: 'center',
+    fontWeight: '600',
+    width: 390,
+    height: 100,
+    margin: 10,
+  },
+});
