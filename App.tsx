@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     gap: 20, // jarak antar gambar
   },
   tinyLogo: {
-    width: 100,
+    width: 80,
     height: 80,
     resizeMode: 'contain',
   },
