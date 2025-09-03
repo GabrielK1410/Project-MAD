@@ -21,7 +21,7 @@ const App = () => {
 export default App;
 const styles = StyleSheet.create({
   title: {
-    backgroundColor: 'purple',
+    backgroundColor: 'cyan',
     color: 'red',
     fontSize: 30,
     textAlign: 'center',
