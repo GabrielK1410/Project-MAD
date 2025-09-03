@@ -10,13 +10,13 @@ const styles = StyleSheet.create({
     gap: 20, // jarak antar gambar
   },
   tinyLogo: {
-    width: 80,
-    height: 80,
+    width: 200,
+    height: 200,
     resizeMode: 'contain',
   },
   logo: {
-    width: 120,
-    height: 100,
+    width: 200,
+    height: 200,
     resizeMode: 'contain',
   },
 });
@@ -24,22 +24,17 @@ const styles = StyleSheet.create({
 const DisplayImages = () => (
   <SafeAreaProvider>
     <SafeAreaView style={styles.container}>
-      {/* 1. Static resource / local file */}
       <Image
         style={styles.tinyLogo}
         source={require('./assets/logo_back.png')}
-        // ganti nama file sesuai gambar kamu di folder ./assets/
       />
 
-      {/* 2. Network image */}
       <Image
         style={styles.tinyLogo}
         source={{
           uri: 'https://reactnative.dev/img/tiny_logo.png',
         }}
       />
-
-      {/* 3. Base64 image */}
       <Image
         style={styles.logo}
         source={{
