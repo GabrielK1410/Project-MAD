@@ -1,95 +1,96 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import React, { useState } from 'react';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 
-const App = () => {
+const SignInScreen = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSignIn = () => {
+    // Aksi login bisa ditambahkan di sini
+    console.log('Username:', username);
+    console.log('Password:', password);
+  };
+
   return (
-    <View style={styles.container}>
-      {/* Foto */}
-      <Image source={require('./assets/photo.jpg')} style={styles.image} />
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.title}>Welcome</Text>
 
-      {/* Nama dan profesi */}
-      <Text style={styles.name}>Gabriel Nehemia Kaunang</Text>
-      <Text style={styles.profession}>Mahasiswa Informatika & Blogger</Text>
-
-      {/* Bagian Kontak */}
-      <View style={styles.contactContainer}>
-        <Text style={styles.contactTitle}>CONTACT ME</Text>
-
-        <View style={styles.contactRow}>
-          <Text style={styles.icon}>📞</Text>
-          <Text style={styles.contactText}>+62 812-3456-7890</Text>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Username</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Masukan username anda"
+            value={username}
+            onChangeText={setUsername}
+          />
         </View>
 
-        <View style={styles.contactRow}>
-          <Text style={styles.icon}>✉️</Text>
-          <Text style={styles.contactText}>gabrielkaunang@email.com</Text>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Password</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Masukan password anda"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+          />
         </View>
 
-        <View style={styles.contactRow}>
-          <Text style={styles.icon}>🌐</Text>
-          <Text style={styles.contactText}>www.gabrielkaunang.com</Text>
-        </View>
-
-        <View style={styles.contactRow}>
-          <Text style={styles.icon}>📍</Text>
-          <Text style={styles.contactText}>Manado, Sulawesi Utara</Text>
-        </View>
-      </View>
-    </View>
+        <TouchableOpacity style={styles.button} onPress={handleSignIn}>
+          <Text style={styles.buttonText}>Sign In</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
-
-export default App;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#485e98ff',
-    alignItems: 'center',
-    padding: 20,
+    backgroundColor: '#fff',
+    paddingHorizontal: 20,
+    justifyContent: 'center',
   },
-  image: {
-    width: 150,
-    height: 150,
-    borderRadius: 10,
-    marginTop: 40,
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginBottom: 30,
+  },
+  inputContainer: {
     marginBottom: 20,
   },
-  name: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#fff',
-    textAlign: 'center',
-  },
-  profession: {
+  label: {
     fontSize: 16,
-    color: '#aaa',
-    marginBottom: 30,
-    textAlign: 'center',
+    fontWeight: '600',
+    marginBottom: 5,
   },
-  contactContainer: {
-    width: '100%',
-    backgroundColor: '#333',
-    borderRadius: 10,
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    padding: 10,
+    fontSize: 16,
+  },
+  button: {
+    backgroundColor: '#1a41b8ff',
     padding: 15,
-  },
-  contactTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#fff',
-    marginBottom: 15,
-  },
-  contactRow: {
-    flexDirection: 'row',
+    borderRadius: 8,
     alignItems: 'center',
-    marginBottom: 12,
+    marginTop: 10,
   },
-  icon: {
-    fontSize: 18,
-    marginRight: 10,
-  },
-  contactText: {
-    fontSize: 14,
-    color: '#eee',
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
+
+export default SignInScreen;
