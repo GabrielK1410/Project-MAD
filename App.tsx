@@ -7,7 +7,7 @@ import Button from './components/Button/Button';
 const Login: React.FC = () => {
   return (
     <View style={styles.container}>
-      <Title text="Welcome" />
+      <Title text="Welcome Lads" />
       <Input label="Username" placeholder="Masukan username anda" />
       <Input
         label="Password"
@@ -15,9 +15,7 @@ const Login: React.FC = () => {
         secureTextEntry={true}
       />
 
-      {/* Main Buttons */}
       <Button label="Sign In" />
-      <Button label="Create New Account" color="#797171" colorText="#ffffff" />
 
       {/* Social Buttons */}
       <Button label="Sign in Google" color="#DB4437" colorText="#fff" />
