@@ -1,38 +1,61 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Button from './components/Button';
+import { View, Text, StyleSheet } from 'react-native';
 import TextInput from './components/TextInput';
+import Button from './components/Button';
 
 const Login = () => {
-  const [title, setTitle] = useState('Welcome');
+  const [nama, setNama] = useState('');
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
+  const [phone, setPhone] = useState('');
 
   const onSignIn = () => {
-    setTitle(`Selamat Datang ${username}`);
-    console.log(`Selamat Datang ${username}`);
+    console.log({
+      nama,
+      username,
+      email,
+      address,
+      phone,
+    });
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
-
+      <Text style={styles.title}>Registration</Text>
       <TextInput
-        placeholder="Masukan username anda"
+        placeholder="Masukan nama lengkap anda"
+        label="Nama"
+        onChangeText={setNama}
+      />
+      <TextInput
+        placeholder="Masukkan username anda"
         label="Username"
-        onChangeText={event => setUsername(event)}
+        onChangeText={setUsername}
       />
-
       <TextInput
-        placeholder="Masukan password anda"
-        label="Password"
-        secureTextEntry={true}
+        placeholder="Masukkan email anda"
+        label="Email"
+        onChangeText={setEmail}
+      />
+      <TextInput
+        placeholder="Masukkan alamat anda"
+        label="Address"
+        onChangeText={setAddress}
+      />
+      <TextInput
+        placeholder="Masukkan nomor telepon anda"
+        label="Phone Number"
+        value={phone}
+        onChangeText={text => {
+          // hanya angka yang boleh dimasukkan
+          const numericText = text.replace(/[^0-9]/g, '');
+          setPhone(numericText);
+        }}
+        keyboardType="numeric"
       />
 
-      <Button label="Sign In" onPress={onSignIn} />
-      <Button label="Sign In Google" color="red" colorText="#ffffff" />
-      <Button label="Sign In Facebook" color="blue" colorText="#ffffff" />
-      <Button label="Sign In Apple" color="black" colorText="#ffffff" />
-      <Button label="Create New Account" color="#797171" colorText="#ffffff" />
+      <Button label="Register" onPress={onSignIn} />
     </View>
   );
 };
@@ -41,7 +64,6 @@ export default Login;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingTop: 60,
     paddingHorizontal: 30,
     backgroundColor: '#fff',
