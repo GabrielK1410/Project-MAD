@@ -1,16 +1,18 @@
 import React from 'react';
 import { TextInput as Input, Text, StyleSheet } from 'react-native';
 
-const TextInput = ({ placeholder, label, keyboardType, ...rest }) => {
-  // Fungsi untuk memfilter angka saja jika keyboardType = "phone-pad"
-  const handleChangeText = (text: string) => {
-    let value = text;
+const TextInput = ({ placeholder, label, keyboardType, onChangeText, value, ...rest }) => {
+  const handleChangeText = (text) => {
+    let filtered = text;
+
+    // Jika tipe keyboard adalah phone-pad, filter hanya angka
     if (keyboardType === 'phone-pad') {
-      value = text.replace(/[^0-9]/g, ''); // ❗ Hanya angka
+      filtered = text.replace(/[^0-9]/g, '');
     }
-    // Jika parent juga mengirim onChangeText, teruskan hasilnya
-    if (rest.onChangeText) {
-      rest.onChangeText(value);
+
+    // Panggil callback parent dengan nilai yang sudah difilter
+    if (onChangeText) {
+      onChangeText(filtered);
     }
   };
 
@@ -22,8 +24,9 @@ const TextInput = ({ placeholder, label, keyboardType, ...rest }) => {
         placeholder={placeholder}
         placeholderTextColor="#888"
         keyboardType={keyboardType}
+        value={value}
+        onChangeText={handleChangeText}
         {...rest}
-        onChangeText={handleChangeText} // Gunakan handler di sini
       />
     </>
   );
